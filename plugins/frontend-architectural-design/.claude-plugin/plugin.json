@@ -1,0 +1,8 @@
+{
+  "name": "frontend-architectural-design",
+  "version": "1.0.0",
+  "description": "Minimal, architectural design system for websites: restrained typography, generous space, sharp corners, near-monochrome palette, with Tailwind v4 templates",
+  "author": {
+    "name": "elhuzain"
+  }
+}
