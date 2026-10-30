@@ -1,8 +1,0 @@
-{
-  "name": "gsap-scroll-animations",
-  "version": "1.0.0",
-  "description": "GSAP smooth scrolling, scroll-triggered reveals and parallax for Next.js, driven by data attributes so sections stay server components",
-  "author": {
-    "name": "elhuzain"
-  }
-}

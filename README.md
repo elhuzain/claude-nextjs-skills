@@ -1,51 +1,49 @@
 # Claude Skills by elhuzain
 
-Skills for [Claude Code](https://claude.com/claude-code) that help build calm, editorial websites with Next.js. Install only the ones you need.
+Skills for [Claude](https://claude.com) that help build calm, editorial websites with Next.js. Each skill is a self-contained folder: download only the ones you need.
 
 ## Skills
 
-### frontend-architectural-design
+| Skill | What it does |
+|---|---|
+| [`frontend-architectural-design`](frontend-architectural-design) | Gives any website the look of an architecture studio's portfolio: light, oversized headings, generous whitespace, sharp corners, large imagery and a near-monochrome palette. Includes a Tailwind CSS v4 design system and hero, feature card and project grid templates. |
+| [`gsap-scroll-animations`](gsap-scroll-animations) | Adds smooth scrolling, scroll-triggered reveals, image wipes and parallax to a Next.js site without turning sections into client components. Elements animate with simple `data-animate` attributes; includes templates for the full setup and a reversible menu animation. |
 
-Gives any website the look of an architecture studio's portfolio: light, oversized headings, generous whitespace, sharp corners, large imagery and a near-monochrome palette. Claude applies the rules to every section it builds and starts from ready-made Tailwind CSS v4 templates: a full design system stylesheet, a hero, feature cards and a project grid.
+The two work well together: design first, then add motion.
 
-### gsap-scroll-animations
+## Install in Claude Code
 
-Adds smooth scrolling, scroll-triggered reveals, image wipes and parallax to a Next.js site in minutes, without turning your sections into client components. Elements are animated with simple `data-animate` attributes, and the skill includes templates for the whole setup plus a reversible menu animation.
+Claude Code loads skills from `~/.claude/skills/` (all your projects) or `.claude/skills/` inside a project (that project only, and shared with anyone who clones it).
 
-The two skills work well together: design first, then add motion.
+Download a single skill with one command. Replace `gsap-scroll-animations` with the skill you want.
 
-## Install
-
-In a Claude Code session, add the marketplace once:
-
-```text
-/plugin marketplace add elhuzain/claude-skills
-```
-
-Then install the skill you want:
-
-```text
-/plugin install frontend-architectural-design@elhuzain-skills
-/plugin install gsap-scroll-animations@elhuzain-skills
-```
-
-Or browse everything with `/plugin`.
-
-From a regular terminal, the same commands are:
+**Into your personal skills (all projects):**
 
 ```bash
-claude plugin marketplace add elhuzain/claude-skills
-claude plugin install gsap-scroll-animations@elhuzain-skills
+mkdir -p ~/.claude/skills && curl -sL https://github.com/elhuzain/claude-skills/archive/refs/heads/main.tar.gz \
+  | tar -xz -C ~/.claude/skills --strip-components=1 claude-skills-main/gsap-scroll-animations
 ```
 
-## Update
+**Into the current project only:**
 
 ```bash
-claude plugin marketplace update elhuzain-skills
-claude plugin update gsap-scroll-animations@elhuzain-skills
+mkdir -p .claude/skills && curl -sL https://github.com/elhuzain/claude-skills/archive/refs/heads/main.tar.gz \
+  | tar -xz -C .claude/skills --strip-components=1 claude-skills-main/gsap-scroll-animations
 ```
 
-Restart Claude Code to apply an update.
+**With Node.js installed**, this shorter form does the same:
+
+```bash
+npx degit elhuzain/claude-skills/gsap-scroll-animations ~/.claude/skills/gsap-scroll-animations
+```
+
+Start a new Claude Code session afterwards. Run the same command again to update a skill to the latest version.
+
+## Install in Claude.ai
+
+1. Download this repo: **Code → Download ZIP**, and extract it.
+2. Zip the folder of the skill you want, for example `gsap-scroll-animations/`.
+3. In Claude.ai, open **Settings → Capabilities → Skills**, upload the zip and turn the skill on.
 
 ## Use
 
@@ -56,10 +54,12 @@ Skills load automatically when relevant. For example:
 
 ## Structure
 
+Each skill is one folder with a `SKILL.md` (instructions Claude reads) and optional `templates/` (code Claude adapts into your project):
+
 ```text
-.claude-plugin/marketplace.json        catalog of all skills
-plugins/<name>/.claude-plugin/plugin.json
-plugins/<name>/skills/<name>/SKILL.md  the skill itself, plus templates/
+<skill-name>/
+├── SKILL.md
+└── templates/
 ```
 
 ## Author
